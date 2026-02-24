@@ -17,11 +17,11 @@ public class HiloServidorUDP extends Thread {
             String mensaje = new String(paquete.getData(), 0, paquete.getLength()).trim();
             InetAddress direccionCliente = paquete.getAddress();
             int puertoCliente = paquete.getPort();
-            ServidorUDP.textarea.append("[" + direccionCliente.getHostAddress() +
+            System.out.println("[" + direccionCliente.getHostAddress() +
                     "] Petición: " + mensaje + "\n");
             int numero = Integer.parseInt(mensaje);
             String resultado = calcularPrimos(numero);
-            ServidorUDP.textarea.append("[" + direccionCliente.getHostAddress() +
+            System.out.println("[" + direccionCliente.getHostAddress() +
                     "] Respuesta: " + resultado + "\n");
             byte[] respuesta = resultado.getBytes();
             DatagramPacket paqueteRespuesta = new DatagramPacket(
